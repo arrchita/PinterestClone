@@ -1,11 +1,14 @@
-# Use an official Nginx image as the base image
-FROM nginx:alpine
+# Use Python base image
+FROM python:3.8-slim
 
-# Copy your HTML, CSS, and image files to the Nginx directory
-COPY . /usr/share/nginx/html
+# Set working directory
+WORKDIR /app
 
-# Expose port 80 to access the server
-EXPOSE 80
+# Copy the HTML and Python files
+COPY . /app
 
-# Start the Nginx server
-CMD ["nginx", "-g", "daemon off;"]
+# Expose port 8000
+EXPOSE 8000
+
+# Run the Python HTTP server
+CMD ["python", "webapp.py"]
