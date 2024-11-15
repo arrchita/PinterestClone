@@ -32,9 +32,6 @@ This repository contains a basic clone of Pinterest, created primarily to practi
 2. **Open the Project:**
    Open the `index.html` file in your preferred web browser.
 
-**Screenshots**
-
-[Insert screenshots of the Pinterest clone, showcasing the home page and pin page]
 
 **Future Improvements**
 
