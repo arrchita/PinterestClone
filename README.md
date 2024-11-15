@@ -1,41 +1,122 @@
-**Pinterest Clone**
+# **Pinterest Clone - Kubernetes and Docker Deployment**
 
-**A Pinterest Clone Built with HTML and CSS**
+## **Project Overview**
 
-**Overview**
+This repository demonstrates the deployment of a Pinterest Clone application using **Minikube**, **Docker**, and **Kubernetes**. The project includes steps to build a Docker image, push it to Docker Hub, and deploy the application on a Kubernetes cluster managed locally with Minikube.
 
-This repository contains a basic clone of Pinterest, created primarily to practice CSS Grid and Flexbox layouts. The project aims to replicate the visual design and layout of Pinterest, focusing on the core functionalities of the platform. 
+The goal is to provide a practical example of containerized application management and deployment, leveraging Kubernetes for scaling and resource management.
 
-**Features**
+---
 
-* **Home Page:**
-  * A feed of pins organized in a grid layout.
-  * Each pin displays an image, a title, and a description.
-  * Infinite scrolling to load more pins as the user scrolls down.
-* **Pin Page:**
-  * A detailed view of a single pin.
-  * Includes a larger image, title, description, and related pins.
+## **Features**
 
-**Technologies Used**
+- **Docker Containerization**: The application is packaged into a portable Docker image for easy deployment.
+- **Kubernetes Deployment**: The application is deployed on a local Minikube cluster for testing and scaling.
+- **Minikube Dashboard Integration**: Real-time monitoring of pods and services through Minikube's web dashboard.
+- **Image Management**: Seamless integration with Docker Hub for image storage and sharing.
 
-* **HTML:**
-  * Provides the basic structure of the web pages.
-* **CSS:**
-  * Used for styling and layout, leveraging CSS Grid and Flexbox for responsive design.
+---
 
-**Getting Started**
+## **Technologies Used**
 
-1. **Clone the Repository:**
+- **Docker**: To containerize the Pinterest Clone application.
+- **Kubernetes**: For deployment and management of the containerized app.
+- **Minikube**: To create and manage the local Kubernetes cluster.
+- **YAML**: For Kubernetes deployment configuration.
+- **GitHub**: To host and version-control the project.
+
+---
+
+## **Getting Started**
+
+### **Prerequisites**
+- Install **Minikube**: [Minikube Installation Guide](https://minikube.sigs.k8s.io/docs/start/)
+- Install **Docker**: [Docker Installation Guide](https://docs.docker.com/get-docker/)
+- Install **kubectl**: [kubectl Installation Guide](https://kubernetes.io/docs/tasks/tools/install-kubectl/)
+
+### **Setup Instructions**
+
+1. **Clone the Repository**
    ```bash
-   git clone https://github.com/breaclark/pinterest-clone.git
+   git clone https://github.com/arrchita/PinterestClone.git
+   cd PinterestClone
    ```
-2. **Open the Project:**
-   Open the `index.html` file in your preferred web browser.
+
+2. **Start Minikube**
+   ```bash
+   minikube start
+   ```
+
+3. **Build the Docker Image**
+   ```bash
+   docker build -t pinterest-clone .
+   ```
+
+4. **Run the Docker Container**
+   ```bash
+   docker run -d -p 8000:8000 pinterest-clone
+   ```
+
+5. **Push the Image to Docker Hub**
+   - Log in to Docker Hub:
+     ```bash
+     docker login
+     ```
+   - Tag the Image:
+     ```bash
+     docker tag pinterest-clone <your-dockerhub-username>/pinterest-clone
+     ```
+   - Push to Docker Hub:
+     ```bash
+     docker push <your-dockerhub-username>/pinterest-clone
+     ```
+
+6. **Deploy on Kubernetes**
+   - Update the deployment YAML file with your Docker Hub image:
+     ```yaml
+     image: <your-dockerhub-username>/pinterest-clone
+     ```
+   - Apply the YAML configuration:
+     ```bash
+     kubectl apply -f deployment.yaml
+     ```
+
+7. **Verify Deployment**
+   - Check Pods:
+     ```bash
+     kubectl get pods
+     ```
+   - Access Minikube Dashboard:
+     ```bash
+     minikube dashboard
+     ```
+
+---
+
+## **Folder Structure**
+
+```
+PinterestClone/
+├── src/                 # Source code for the Pinterest Clone app
+├── Dockerfile           # Dockerfile for building the application image
+├── deployment.yaml      # Kubernetes deployment configuration
+└── README.md            # Project documentation
+```
+
+---
+
+## **Project Workflow**
+
+1. **Build the Docker Image**: Package the application into a Docker container.
+2. **Push to Docker Hub**: Upload the image for sharing and reuse.
+3. **Deploy on Minikube**: Use YAML configuration to deploy and manage the application on Kubernetes.
+4. **Monitor Deployment**: Verify the status of pods and monitor resource utilization through Minikube's dashboard.
+
+---
+
+## **Accessing the Application**
+
+- **Locally**: Visit `http://localhost:8000` after running the container.
+- **On Minikube**: Use the Minikube IP and the exposed service port to access the application.
 
 
-**Future Improvements**
-
-* **Responsive Design:** Further optimize the layout for various screen sizes and devices.
-* **Interactive Features:** Implement features like liking, commenting, and saving pins.
-* **User Authentication:** Allow users to create accounts and personalize their feeds.
-* **Search Functionality:** Enable users to search for specific pins or boards.
