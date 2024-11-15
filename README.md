@@ -46,7 +46,7 @@ The goal is to provide a practical example of containerized application manageme
    ```bash
    minikube start
    ```
-   ![image](https://github.com/user-attachments/assets/a6ef2e86-1a48-48fc-a68a-bd41edcd384f)
+   <img src="https://github.com/user-attachments/assets/a6ef2e86-1a48-48fc-a68a-bd41edcd384f" width="500" /> 
 
 
 
