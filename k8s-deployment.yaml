@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pinterest-clone
+  labels:
+    app: pinterest-clone
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: pinterest-clone
+  template:
+    metadata:
+      labels:
+        app: pinterest-clone
+    spec:
+      containers:
+      - name: pinterest-clone
+        image: z9997/pinterest-clone:latest
+        ports:
+        - containerPort: 8000
