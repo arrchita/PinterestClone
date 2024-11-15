@@ -46,11 +46,16 @@ The goal is to provide a practical example of containerized application manageme
    ```bash
    minikube start
    ```
+   ![image](https://github.com/user-attachments/assets/a6ef2e86-1a48-48fc-a68a-bd41edcd384f)
+
+
 
 3. **Build the Docker Image**
    ```bash
    docker build -t pinterest-clone .
    ```
+   ![image](https://github.com/user-attachments/assets/9c7874f8-a87a-418c-89c4-8d165a55a6ca)
+
 
 4. **Run the Docker Container**
    ```bash
@@ -70,12 +75,16 @@ The goal is to provide a practical example of containerized application manageme
      ```bash
      docker push <your-dockerhub-username>/pinterest-clone
      ```
+    ![image](https://github.com/user-attachments/assets/695b91da-3b44-4b2b-a558-f56a6f6d875a)
+
 
 6. **Deploy on Kubernetes**
    - Update the deployment YAML file with your Docker Hub image:
      ```yaml
      image: <your-dockerhub-username>/pinterest-clone
      ```
+     ![image](https://github.com/user-attachments/assets/3ffb6f11-ca18-4bfd-b41f-3eb055b5b6c1)
+
    - Apply the YAML configuration:
      ```bash
      kubectl apply -f deployment.yaml
@@ -90,6 +99,7 @@ The goal is to provide a practical example of containerized application manageme
      ```bash
      minikube dashboard
      ```
+     ![image](https://github.com/user-attachments/assets/9aff1fd3-5eed-45ef-b0a9-fdbceec3f136)
 
 ---
 
@@ -117,6 +127,10 @@ PinterestClone/
 ## **Accessing the Application**
 
 - **Locally**: Visit `http://localhost:8000` after running the container.
+![image](https://github.com/user-attachments/assets/e356ae0c-b920-43f3-b09f-7470c5bcbefb)
+
 - **On Minikube**: Use the Minikube IP and the exposed service port to access the application.
+
+
 
 
